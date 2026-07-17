@@ -33,7 +33,12 @@ SQLite file, which is fine for testing.
 ## Deploy with real, persistent cloud storage (Render)
 
 1. **Push this folder to a GitHub repo** and connect it to Render as a Web
-   Service.
+   Service. This repo includes a `.python-version` file pinning Python to
+   `3.12.3` — Render reads this automatically, which matters because
+   `psycopg2-binary`'s precompiled wheel isn't yet built for very new Python
+   releases. As a belt-and-suspenders backup, you can also set an
+   environment variable `PYTHON_VERSION` = `3.12.3` on the service itself
+   (Render's dashboard → Environment) — either one should pin it.
 2. **Create a Postgres database on Render** (Render dashboard → New →
    Postgres, free tier is fine). Render gives you an **Internal Database
    URL** — copy it.
